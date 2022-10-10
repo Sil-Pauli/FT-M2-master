@@ -1,0 +1,18 @@
+.cuadrado {
+    background:linear-gradient(75deg,  #0396ff,#abdcff) ;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+.btnClose{
+    
+    background-color:  #0396ff; /*color de fondo */
+    margin: 10px;
+    color: rgb(248, 248, 248); /*COLOR DE LA X*/
+    border: none; /*quita el borde*/
+    font-weight: 700;
+    margin-top: 10px;
+}
+.btnClose:hover {
+    color: #0396ff;
+    background-color: transparent
+}
