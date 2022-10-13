@@ -3,8 +3,12 @@ import React, { useState } from 'react';
 import './App.css';
 import Nav from '../components/Nav.jsx';
 import Cards from '../components/Cards.jsx';
+import About from '../components/About';
+import Ciudad from '../components/Ciudad';
 
-const apiKey = 'Aqui va la API key que creaste';
+import { Route, Switch } from 'react-router-dom';
+
+const apiKey = '4ae2636d8dfbdc3044bede63951a019b&units=metric';
 
 function App() {
   const [cities, setCities] = useState([]);
@@ -37,22 +41,29 @@ function App() {
       });
   }
   function onFilter(ciudadId) {
-    let ciudad = cities.filter(c => c.id === parseInt(ciudadId));
-    if(ciudad.length > 0) {
-        return ciudad[0];
-    } else {
-        return null;
-    }
+    let ciudad = cities.find(c => c.id === parseInt(ciudadId));
+    return ciudad;
   }
+  
   return (
     <div className="App">
-      <Nav onSearch={onSearch}/>
-      <div>
-        <Cards
+      <Nav onSearch={onSearch}/> {/* el NAV lo ponemos fuera del Switch para que siempre pueda verse.*/}
+      
+      <Switch>
+        <Route exact path='/'> {/*se crea una route (ruta) y se le agrega un exact para que pueda mostras los demas componentes /ciudad o /about */}
+          <Cards
           cities={cities}
           onClose={onClose}
-        />
-      </div>
+          />
+        </Route>
+        <Route path="/about"> 
+         <About />
+        </Route>
+        <Route  exact path='/ciudad/:id' 
+           render={({match}) => <Ciudad city ={onFilter(match.params.id)}/>} >
+            {/* es un path dinamico, '/ciudad' + ':id (la ciudad que le pasemos)*/}
+        </Route>
+      </Switch>
       <hr />
     </div>
   );

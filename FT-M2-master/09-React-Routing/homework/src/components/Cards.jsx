@@ -8,6 +8,7 @@ export default function Cards({cities, onClose}) {
     <div className='cards'>
       {cities.map(c => <Card
           key={c.id}
+          id={c.id} /*para que pueda renderizar la tarjeta card y muestre mas info de la ciudad */
           max={c.max}
           min={c.min}
           name={c.name}
