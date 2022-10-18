@@ -7,7 +7,7 @@ import { fetchPost } from '../actions/index.js';
 import axios from 'axios';
 
 
-const Counter = ({ counter, increment, decrement, reset, fetchPost}) => (
+const Counter = ({ counter, increment, decrement, reset, fetchPost}) => ( //tenemos un componentes counter, que es una funcion que puede ser un props o un destractor (counter, increment, decrement, reset, fetchPost)
       <p>
         Clicked: {counter} times
         {' '}
@@ -19,7 +19,7 @@ const Counter = ({ counter, increment, decrement, reset, fetchPost}) => (
           -
         </button>
         {' '}
-        <button onClick={reset}>
+        <button onClick={reset}> 
           Reset
         </button>
         <button onClick={() => fetchPost(counter)}>
