@@ -32,7 +32,7 @@ export function receivePost(post) {
  
 export function fetchPost(valor) {
   return function (dispatch) {  //retorna una funcion que tiene el dispatch como parametro
-    dispatch(getPost()); // es el 'cargando' de los datos
+    dispatch(getPost()); // es el 'cargando de los datos
     axios.get(`https://jsonplaceholder.typicode.com/todos/${valor}`) //hace un get, busca los datos en el servidor con el valor de lo que este 
       .then(r => r.data) // obtiene los datos 
       .then(d => dispatch(receivePost(d))) // y una vez obtenidos los despacha. -(d) es la respuesta que pasa el servidor 
